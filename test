@@ -2,7 +2,10 @@
 set -o errexit
 set -o nounset
 
-program="./gol"
+program="${1?"
+Usage:
+    ./test ./your-game-of-life-implementation
+"}"
 
 input="\
 Generation 1:
@@ -17,7 +20,7 @@ diff -u - <($program <<< "$input" ) << EXPECTED_OUTPUT
 Generation 2:
 4 8
 ........
-...*....
-........
+...**...
+...**...
 ........
 EXPECTED_OUTPUT
